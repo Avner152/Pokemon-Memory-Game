@@ -229,11 +229,11 @@ function randomizeBoard() {
     card.addEventListener("click", function () {
       if (card.querySelectorAll("img")[1].src.includes("card13")) {
         if (turn_flag % 2 == 0) {
-          user2.wins++;
-          gameOver(user2);
+          // user2.wins++;
+          // gameOver(user2);
         } else {
-          user1.wins++;
-          gameOver(user1);
+          // user1.wins++;
+          // gameOver(user1);
         }
       }
       if (card.getAttribute("class").includes("checked")) {
@@ -250,13 +250,6 @@ function randomizeBoard() {
               flip(card_check1);
               flip(card_check2);
             } else {
-              if (turn_flag % 2 == 0)
-                document.querySelector("#p1").querySelector("h3").innerText =
-                  "Score: " + ++user1.score;
-              else
-                document.querySelector("#p2").querySelector("h3").innerText =
-                  "Score: " + ++user2.score;
-
               findImageColumn(card_check1);
               findImageColumn(card_check2);
             }
@@ -266,20 +259,6 @@ function randomizeBoard() {
 
             // console.log(is_match);
             is_match = 0;
-            if (user1.score + user2.score == total_points) {
-              if (user1.score > user2.score) {
-                user1.wins++;
-                gameOver(user1);
-              } else if (user1.score < user2.score) {
-                user2.wins++;
-                gameOver(user2);
-              } else {
-                //console.log("TIE");
-                gameOver(null, true);
-              }
-              localStorage.setItem(user1.name, user1.wins);
-              localStorage.setItem(user2.name, user2.wins);
-            }
           }
         }, 750);
       }
